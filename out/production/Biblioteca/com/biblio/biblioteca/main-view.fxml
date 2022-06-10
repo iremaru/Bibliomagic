@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" style="-fx-background-radius: 25 25 0 0;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.BibliotecaController">
+   <children>
+      <VBox prefHeight="500.0" prefWidth="700.0" style="-fx-background-radius: 25 25 0 0;" styleClass="body" stylesheets="@style/style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="TOP_CENTER" maxHeight="50.0" prefHeight="100.0" prefWidth="200.0" spacing="5.0" style="-fx-background-radius: 25 25 0 0;" styleClass="header" stylesheets="@style/style.css" VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" style="-fx-background-radius: 25 25 0 0;" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="LA" textAlignment="CENTER">
+                           <font>
+                              <Font name="Impact" size="48.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/PlotTwistIcons-BookClosed.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="375.0" layoutY="12.0" text="BIBLIOTECA" textAlignment="CENTER">
+                           <font>
+                              <Font name="Impact" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="58.0" />
+                     </padding>
+                  </HBox>
+                  <Button mnemonicParsing="false" onAction="#CloseApp" style="-fx-background-radius: 25;" styleClass="btnRoundFunny">
+                     <graphic>
+                        <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/UIicons/icons8-eliminar-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <tooltip>
+                        <Tooltip text="Cerrar la biblioteca" />
+                     </tooltip>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <TabPane prefHeight="500.0" prefWidth="500.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+              <tabs>
+                  <Tab id="tab-book" text="LIBROS">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox alignment="CENTER" maxHeight="100.0" prefHeight="75.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox alignment="CENTER" layoutX="515.0" layoutY="20.0" spacing="5.0">
+                                             <children>
+                                                <Label styleClass="textLight" stylesheets="@style/style.css" text="Título">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="bookNameTextField" onAction="#SearchBook" promptText="Libro">
+                                                   <font>
+                                                      <Font name="Ebrima" size="12.0" />
+                                                   </font></TextField>
+                                             </children>
+                                          </VBox>
+                                          <Separator orientation="VERTICAL" prefHeight="200.0" />
+                                          <VBox alignment="CENTER" layoutX="68.0" layoutY="20.0" spacing="5.0">
+                                             <children>
+                                                <Label styleClass="textLight" stylesheets="@style/style.css" text="Autor">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="authorTextField" onAction="#SearchBook" promptText="Autor">
+                                                   <font>
+                                                      <Font name="Ebrima" size="12.0" />
+                                                   </font></TextField>
+                                             </children>
+                                          </VBox>
+                                          <Separator layoutX="237.0" layoutY="20.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <VBox alignment="CENTER" layoutX="265.0" layoutY="20.0" spacing="5.0">
+                                             <children>
+                                                <Label styleClass="textLight" stylesheets="@style/style.css" text="Editorial">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <TextField fx:id="editorialTextField" onAction="#SearchBook" promptText="Editorial">
+                                                   <font>
+                                                      <Font name="Ebrima" size="12.0" />
+                                                   </font>
+                                                </TextField>
+                                             </children>
+                                          </VBox>
+                                          <Separator layoutX="434.0" layoutY="20.0" orientation="VERTICAL" prefHeight="200.0" />
+                                          <VBox alignment="CENTER" spacing="5.0">
+                                             <children>
+                                                <Label styleClass="textLight" stylesheets="@style/style.css" text="Tipo de asignatura">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox alignment="CENTER" prefHeight="25.0" spacing="5.0">
+                                                   <children>
+                                                      <CheckBox fx:id="coreSubjectCheckBox" mnemonicParsing="false" selected="true" styleClass="textLight" stylesheets="@style/style.css" text="Troncal" />
+                                                      <CheckBox fx:id="selectiveSubjectCheckBox" mnemonicParsing="false" selected="true" styleClass="textLight" stylesheets="@style/style.css" text="Electiva" />
+                                                      <CheckBox fx:id="extraSubjectCheckBox" mnemonicParsing="false" selected="true" styleClass="textLight" stylesheets="@style/style.css" text="Extracurricular" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Separator layoutX="146.0" layoutY="20.0" orientation="VERTICAL" prefHeight="80.0">
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets></Separator>
+                                          <VBox alignment="CENTER" layoutX="136.0" layoutY="20.0" spacing="5.0">
+                                             <children>
+                                                <Label styleClass="textLight" stylesheets="@style/style.css" text="Estado">
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <HBox alignment="CENTER" spacing="5.0">
+                                                   <children>
+                                                      <CheckBox fx:id="newStateCheckBox" mnemonicParsing="false" selected="true" styleClass="textLight" stylesheets="@style/style.css" text="Nuevo" />
+                                                      <CheckBox fx:id="usedStateCheckBox" mnemonicParsing="false" prefHeight="25.0" selected="true" styleClass="textLight" stylesheets="@style/style.css" text="Usado" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                          <Button mnemonicParsing="false" onAction="#SearchBook" styleClass="btnLeaf">
+                                             <graphic>
+                                                <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-encontrar-y-reemplazar-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <tooltip>
+                                                <Tooltip text="Buscar" />
+                                             </tooltip>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox prefHeight="397.0" prefWidth="700.0" VBox.vgrow="ALWAYS">
+                                       <children>
+                                          <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="120.0" prefHeight="317.0" prefWidth="120.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <Button fx:id="btnRegisterBook" contentDisplay="TOP" mnemonicParsing="false" onAction="#OpenRegisterBookWindow" prefWidth="100.0" text="NUEVO">
+                                                   <graphic>
+                                                      <ImageView fitHeight="75.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-libro-de-salud-100.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="btnCreate" />
+                                                      <String fx:value="imageBtn" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="12.0" />
+                                                   </font>
+                                                   <tooltip>
+                                                      <Tooltip text="Ingresa un nuevo libro en la biblioteca" />
+                                                   </tooltip></Button>
+                                                <Button fx:id="btnEditBook" contentDisplay="TOP" layoutX="35.0" layoutY="10.0" mnemonicParsing="false" onAction="#EditSelectedBook" prefWidth="100.0" text="EDITAR">
+                                                   <graphic>
+                                                      <ImageView fitHeight="75.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-book-and-pencil-100.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="btnCreate" />
+                                                      <String fx:value="imageBtn" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="12.0" />
+                                                   </font>
+                                                   <tooltip>
+                                                      <Tooltip text="Selecciona un libro para desbloquear este botón" />
+                                                   </tooltip>
+                                                </Button>
+                                                <Button fx:id="btnDeleteBook" contentDisplay="TOP" layoutX="35.0" layoutY="138.0" mnemonicParsing="false" onAction="#DeleteSelectedBook" prefWidth="100.0" text="DESTRUIR">
+                                                   <graphic>
+                                                      <ImageView fitHeight="75.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-eliminar-100-2.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                   <styleClass>
+                                                      <String fx:value="btnCreate" />
+                                                      <String fx:value="imageBtn" />
+                                                   </styleClass>
+                                                   <font>
+                                                      <Font name="Ebrima Bold" size="12.0" />
+                                                   </font>
+                                                   <tooltip>
+                                                      <Tooltip id="tooltipDeleteBook" text="Destruye libros más rápido que la revolución cultural china." />
+                                                   </tooltip>
+                                                </Button>
+                                             </children>
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </HBox.margin>
+                                          </VBox>
+                                          <TableView fx:id="bookTable" prefHeight="387.0" prefWidth="537.0" HBox.hgrow="ALWAYS">
+                                             <columns>
+                                                <TableColumn fx:id="bookCoverCol" minWidth="100.0" prefWidth="100.0" text="Portada">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-ibooks-100.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></TableColumn>
+                                                <TableColumn fx:id="bookTitleCol" minWidth="150.0" prefWidth="200.0" text="Título">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-leer-100.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></TableColumn>
+                                                <TableColumn fx:id="bookSubjectCol" minWidth="125.0" prefWidth="125.0" text="Asignatura">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-clase-32.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></TableColumn>
+                                                <TableColumn fx:id="bookAuthorCol" minWidth="100.0" prefWidth="150.0" text="Autor">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-bruja-100-2.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></TableColumn>
+                                                <TableColumn fx:id="bookEditorialCol" minWidth="100.0" prefWidth="100.0" text="Editorial">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-biblioteca-100.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></TableColumn>
+                                                <TableColumn fx:id="bookStateCol" minWidth="100.0" prefWidth="100.0" text="Estado">
+                                                   <graphic>
+                                                      <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@img/UIicons/icons8-garantía-32.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic></TableColumn>
+                                             </columns>
+                                             <HBox.margin>
+                                                <Insets right="20.0" />
+                                             </HBox.margin>
+                                          </TableView>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                <Tab id="tab-borrow" text="PRÉSTAMOS">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="471.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" maxWidth="150.0" minWidth="120.0" prefHeight="367.0" prefWidth="120.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Button contentDisplay="TOP" maxHeight="25.0" maxWidth="25.0" mnemonicParsing="false" onAction="#BorrowBook" prefWidth="25.0" text="PRESTAR">
+                                             <graphic>
+                                                <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-marcapáginas-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="imageBtn" />
+                                                <String fx:value="btnCreate" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                             <tooltip>
+                                                <Tooltip text="Lo que se da, no se quita" />
+                                             </tooltip></Button>
+                                          <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#ReturnBook" prefWidth="100.0" text="DEVOLVER">
+                                             <graphic>
+                                                <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-storytelling-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="btnCreate" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                             <tooltip>
+                                                <Tooltip text="Devuélvemelo. Es míío. Mi tessoro." />
+                                             </tooltip></Button>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                    <TableView fx:id="borrowTable" prefHeight="387.0" prefWidth="537.0" HBox.hgrow="ALWAYS">
+                                      <columns>
+                                        <TableColumn fx:id="borrowBookCol" minWidth="100.0" prefWidth="235.0" text="Libro">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-marcapáginas-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic></TableColumn>
+                                        <TableColumn fx:id="borrowStudentCol" minWidth="100.0" prefWidth="205.0" text="Alumno">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-bruja-100-2.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic></TableColumn>
+                                          <TableColumn fx:id="borrowStateCol" minWidth="100.0" prefWidth="145.0" text="Estado">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-casilla-de-verificación-desactivada-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </TableColumn>
+                                          <TableColumn fx:id="borrowStartDateCol" minWidth="100.0" prefWidth="115.0" text="Prestamo">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-calendario-32.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </TableColumn>
+                                          <TableColumn fx:id="borrowEndDateCol" minWidth="100.0" prefWidth="120.0" text="Devolución">
+                                             <graphic>
+                                                <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-calendario-32.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </TableColumn>
+                                      </columns>
+                                       <HBox.margin>
+                                          <Insets right="20.0" />
+                                       </HBox.margin>
+                                    </TableView>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab id="tab-student" text="ALUMNOS">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <fx:include fx:id="alumnTab" source="AlumnTab.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab id="tab-UI" text="BOTONES">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <HBox prefHeight="604.0" prefWidth="1022.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <VBox alignment="CENTER" prefWidth="500.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Button minWidth="120.0" mnemonicParsing="false" styleClass="btnTicket" text="ABRA">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font></Button>
+                                          <Button contentDisplay="TOP" minWidth="120.0" mnemonicParsing="false" text="CALABAZA">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cute-pumpkin-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="btnTicket" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button minWidth="120.0" mnemonicParsing="false" styleClass="btnTicket">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cauldron-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button contentDisplay="TOP" minWidth="120.0" mnemonicParsing="false" styleClass="btnTicket" text="CARPE DIE">
+                                             <graphic>
+                                                <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cráneo-lindo-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxWidth="100.0" minWidth="120.0" mnemonicParsing="false" styleClass="btnTicket" text="Eliminar Alumno Maldito Alumno" textAlignment="CENTER" wrapText="true">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font></Button>
+                                          <Button fx:id="btnRegisterBook111" contentDisplay="TOP" mnemonicParsing="false" prefWidth="100.0" styleClass="btnTicket" text="NUEVO">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-libro-de-salud-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" prefWidth="500.0" spacing="20.0" HBox.hgrow="ALWAYS">
+                                       <children>
+                                          <Button minWidth="120.0" mnemonicParsing="false" text="CADABRA">
+                                             <styleClass>
+                                                <String fx:value="btnCreate" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button contentDisplay="TOP" minWidth="120.0" mnemonicParsing="false" text="CALABAZA">
+                                             <styleClass>
+                                                <String fx:value="btnCreate" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cute-pumpkin-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button minWidth="120.0" mnemonicParsing="false">
+                                             <styleClass>
+                                                <String fx:value="btnCreate" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cauldron-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button contentDisplay="TOP" minWidth="120.0" mnemonicParsing="false" text="CARPE DIE">
+                                             <graphic>
+                                                <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cráneo-lindo-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="btnCreate" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button maxWidth="100.0" minWidth="120.0" mnemonicParsing="false" text="Eliminar Alumno Maldito Alumno" wrapText="true">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="btnCreate" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass></Button>
+                                          <Button fx:id="btnRegisterBook1" contentDisplay="TOP" mnemonicParsing="false" prefWidth="100.0" text="NUEVO">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-libro-de-salud-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <styleClass>
+                                                <String fx:value="btnCreate" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" layoutX="491.0" layoutY="10.0" prefWidth="500.0" spacing="20.0">
+                                       <children>
+                                          <Button minWidth="120.0" mnemonicParsing="false" styleClass="btnRoundFunny" text="PATA">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button contentDisplay="TOP" minWidth="120.0" mnemonicParsing="false" text="CALABAZA">
+                                             <styleClass>
+                                                <String fx:value="btnRoundFunny" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cute-pumpkin-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button minWidth="120.0" mnemonicParsing="false" styleClass="btnRoundFunny">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cauldron-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button contentDisplay="TOP" minWidth="120.0" mnemonicParsing="false" styleClass="btnRoundFunny" text="CARPE DIE">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                             <graphic>
+                                                <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cráneo-lindo-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button maxWidth="100.0" minWidth="120.0" mnemonicParsing="false" styleClass="btnRoundFunny" text="Eliminar Alumno Maldito Alumno" textAlignment="CENTER" wrapText="true">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnRegisterBook11" contentDisplay="TOP" mnemonicParsing="false" prefWidth="100.0" styleClass="btnRoundFunny" text="NUEVO">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-libro-de-salud-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                    <VBox alignment="CENTER" layoutX="652.0" layoutY="10.0" prefWidth="500.0" spacing="20.0">
+                                       <children>
+                                          <Button minWidth="120.0" mnemonicParsing="false" styleClass="btnLeaf" text="DE CABRA">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button contentDisplay="TOP" minWidth="120.0" mnemonicParsing="false" text="CALABAZA">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cute-pumpkin-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="btnLeaf" />
+                                                <String fx:value="imageBtn" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button minWidth="120.0" mnemonicParsing="false" styleClass="btnLeaf">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cauldron-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                          </Button>
+                                          <Button contentDisplay="TOP" minWidth="120.0" mnemonicParsing="false" styleClass="btnLeaf" text="CARPE DIE">
+                                             <graphic>
+                                                <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-cráneo-lindo-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button maxWidth="100.0" minWidth="120.0" mnemonicParsing="false" styleClass="btnLeaf" text="Eliminar Alumno Maldito Alumno" textAlignment="CENTER" wrapText="true">
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                          <Button fx:id="btnRegisterBook112" contentDisplay="TOP" mnemonicParsing="false" prefWidth="100.0" styleClass="btnLeaf" text="NUEVO">
+                                             <graphic>
+                                                <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@img/UIicons/icons8-libro-de-salud-100.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </graphic>
+                                             <font>
+                                                <Font name="Ebrima Bold" size="12.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+            <HBox alignment="CENTER_RIGHT" maxHeight="50.0" prefHeight="50.0" prefWidth="200.0" spacing="10.0" style="-fx-border-color: #10162E; -fx-border-width: 1 2 3 2; -fx-border-radius: 25 3 0 0;">
+               <children>
+                  <VBox>
+                     <children>
+                        <Label styleClass="textLight" text="GitHub/Iremaru ©2021" />
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Label styleClass="textLight" text="ICONS">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="10.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" styleClass="textLight" text=" ©">
+                                 <font>
+                                    <Font name="Ebrima" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Hyperlink onAction="#GoToIcon8Web" stylesheets="@style/style.css" text="icons8" visited="true" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

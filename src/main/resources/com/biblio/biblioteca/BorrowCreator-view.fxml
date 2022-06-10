@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: none; -fx-border-color: #7C5930; -fx-border-radius: 10;" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.BorrowCreatorViewController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="1000.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" styleClass="body" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" maxHeight="50.0" minHeight="30.0" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 10;" styleClass="body">
+               <children>
+                  <Button contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#CloseWindow" style="-fx-background-radius: 25;" styleClass="btnRoundFunny" stylesheets="@style/style.css">
+                     <font>
+                        <Font name="Ebrima Bold" size="12.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/UIicons/icons8-eliminar-100.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-border-color: #7C5930; -fx-border-width: 3; -fx-border-radius: 10; -fx-background-radius: 10;" styleClass="body" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="windowTicked" stylesheets="@style/style.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" styleClass="textLight" stylesheets="@style/style.css" text="¿A QUIÉN?">
+                           <graphic>
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/UIicons/icons8-bruja-100-2.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Ebrima Bold" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TextField fx:id="studentName" maxWidth="150.0" prefWidth="150.0" promptText="Nombre" />
+                                    <TextField fx:id="studentSurname" maxWidth="150.0" prefWidth="150.0" promptText="Apellido" />
+                                    <ChoiceBox fx:id="studentHouse" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" layoutX="48.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                 <children>
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#SearchStudent" styleClass="btnLeaf" stylesheets="@style/style.css" text="BUSCAR">
+                                       <graphic>
+                                          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/UIicons/icons8-encontrar-y-reemplazar-100.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <font>
+                                          <Font name="Ebrima Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <TableView fx:id="studentTable" prefHeight="200.0" prefWidth="200.0">
+                          <columns>
+                            <TableColumn fx:id="studentNameCol" prefWidth="75.0" text="Nombre" />
+                            <TableColumn fx:id="studentSurnameCol" prefWidth="75.0" text="Apellido" />
+                              <TableColumn fx:id="studentHouseCol" prefWidth="75.0" text="Casa" />
+                              <TableColumn fx:id="studentYearCol" prefWidth="75.0" text="Curso" />
+                          </columns>
+                        </TableView>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="windowTicked" stylesheets="@style/style.css" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" styleClass="textLight" stylesheets="@style/style.css" text="¿EL QUÉ?">
+                           <graphic>
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/UIicons/icons8-leer-100.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Ebrima Bold" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <TextField fx:id="bookTitle" maxWidth="150.0" prefWidth="150.0" promptText="Título" />
+                                    <TextField fx:id="bookAuthor" maxWidth="150.0" prefWidth="150.0" promptText="Autor" />
+                                    <ChoiceBox fx:id="bookSubject" prefWidth="150.0" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" layoutX="48.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
+                                 <children>
+                                    <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#SearchBook" styleClass="btnLeaf" stylesheets="@style/style.css" text="BUSCAR">
+                                       <font>
+                                          <Font name="Ebrima Bold" size="12.0" />
+                                       </font>
+                                       <graphic>
+                                          <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@img/UIicons/icons8-encontrar-y-reemplazar-100.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <TableView fx:id="bookTable" prefHeight="200.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="bookTitleCol" prefWidth="75.0" text="Título" />
+                              <TableColumn fx:id="bookAuthorCol" prefWidth="75.0" text="Autor" />
+                              <TableColumn fx:id="bookSubjectCol" prefWidth="75.0" text="Asignatura" />
+                              <TableColumn fx:id="bookEditorialCol" prefWidth="75.0" text="Editorial" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="windowTicked" stylesheets="@style/style.css" HBox.hgrow="ALWAYS">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <children>
+                        <Label alignment="TOP_CENTER" contentDisplay="TOP" styleClass="textLight" stylesheets="@style/style.css" text="PRESTAMO">
+                           <graphic>
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/UIicons/icons8-storytelling-100.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Ebrima Bold" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                        <GridPane>
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="81.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="190.0" minWidth="10.0" prefWidth="190.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label styleClass="textLight" text="ALUMNO:">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="18.0" styleClass="textLight" text="CASA:" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="borrowStudent" styleClass="textLight" text="Nombre + Apellido" GridPane.columnIndex="1" />
+                              <Label fx:id="borrowStudentHouse" layoutX="146.0" layoutY="17.0" styleClass="textLight" text="Casa" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label fx:id="borrowStudentYear" layoutX="146.0" layoutY="47.0" styleClass="textLight" text="Curso" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label styleClass="textLight" text="CURSO:" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="78.0" styleClass="textLight" text="EDITORIAL:" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="168.0" styleClass="textLight" text="LIBRO:" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="108.0" styleClass="textLight" text="AUTOR:" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Ebrima Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="borrowTitle" layoutX="91.0" layoutY="77.0" styleClass="textLight" text="Título" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <Label fx:id="borrowAuthor" layoutX="91.0" layoutY="107.0" styleClass="textLight" text="Autor" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <Label fx:id="borrowEditorial" layoutX="91.0" layoutY="137.0" styleClass="textLight" text="Editorial" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           </children>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </GridPane>
+                        <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#BorrowBook" styleClass="btnLeaf" stylesheets="@style/style.css" text="PRESTAR">
+                           <font>
+                              <Font name="Ebrima Bold" size="12.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@img/UIicons/icons8-single-page-mode-100.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

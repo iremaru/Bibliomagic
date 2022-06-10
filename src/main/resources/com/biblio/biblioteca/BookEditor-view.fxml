@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.BookEditorViewController">
+<children>
+    <AnchorPane prefHeight="600.0" prefWidth="450.0" style="-fx-background-radius: 10; -fx-border-color: #7C5930; -fx-border-radius: 10;" styleClass="body" stylesheets="@style/style.css">
+        <children>
+            <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-border-color: #7C5930; -fx-border-width: 3; -fx-border-radius: 10; -fx-border-style: dotted solid dotted solid; -fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                    <Label contentDisplay="TOP" styleClass="textLight" stylesheets="@style/style.css" text="EDITAR LIBRO" textAlignment="CENTER">
+                        <font>
+                            <Font name="Corbel Bold" size="18.0" />
+                        </font>
+                        <graphic>
+                            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@img/PlotTwistIcons-BookClosed.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Label>
+                    <GridPane>
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="75.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <children>
+                            <Label styleClass="textLight" stylesheets="@style/style.css" text="Título" />
+                            <Label styleClass="textLight" stylesheets="@style/style.css" text="Autor" GridPane.rowIndex="1" />
+                            <Label styleClass="textLight" stylesheets="@style/style.css" text="Editorial" GridPane.rowIndex="2" />
+                            <Label styleClass="textLight" stylesheets="@style/style.css" text="Asignatura" GridPane.rowIndex="3" />
+                            <Label styleClass="textLight" stylesheets="@style/style.css" text="Estado" GridPane.rowIndex="4" />
+                            <TextField fx:id="title" GridPane.columnIndex="1" />
+                            <TextField fx:id="author" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <TextField fx:id="editorial" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <ChoiceBox fx:id="subject" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <ChoiceBox fx:id="state" prefWidth="262.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        </children>
+                    </GridPane>
+                    <HBox alignment="CENTER" spacing="20.0">
+                        <children>
+                            <Button layoutX="95.0" layoutY="30.0" mnemonicParsing="false" onAction="#EmptyData" styleClass="btnRoundFunny">
+                                <graphic>
+                                    <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@img/UIicons/icons8-libro-abierto-100.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                           <tooltip>
+                              <Tooltip text="Vaciar los campos" />
+                           </tooltip>
+                            </Button>
+                            <Button mnemonicParsing="false" onAction="#Save" styleClass="btnRoundFunny">
+                                <graphic>
+                                    <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@img/UIicons/icons8-añadir-100.png" />
+                                        </image>
+                                    </ImageView>
+                                </graphic>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                           <tooltip>
+                              <Tooltip text="Guardar" />
+                           </tooltip>
+                            </Button>
+                            <Button cancelButton="true" mnemonicParsing="false" onAction="#Close" styleClass="btnRoundFunny">
+                                <graphic>
+                                    <ImageView fitHeight="64.0" fitWidth="64.0" focusTraversable="true" pickOnBounds="true" preserveRatio="true">
+                                        <image>
+                                            <Image url="@img/UIicons/icons8-eliminar-100.png" />
+                                        </image>
+                                        <cursor>
+                                            <Cursor fx:constant="HAND" />
+                                        </cursor>
+                                    </ImageView>
+                                </graphic>
+                                <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                </cursor>
+                           <tooltip>
+                              <Tooltip text="Cancelar" />
+                           </tooltip>
+                            </Button>
+                        </children>
+                        <padding>
+                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </padding>
+                    </HBox>
+                </children>
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
+            </VBox>
+        </children>
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        </padding>
+    </AnchorPane>
+</children>
+</AnchorPane>

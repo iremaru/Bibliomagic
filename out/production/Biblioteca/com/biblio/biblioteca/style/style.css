@@ -1,0 +1,323 @@
+/*
+    COLOR-PRINCIPAL-OSCURO: #2D3142;
+    COLOR-SECUNDARIO-OSCURO: #7C5930;
+    COLOR-TEXT-LIGHT: #D4D8EB
+*/
+
+:root {
+    color-mainDark: #2D3142;
+    color-mainDark2:  #1D233B;
+    color-mainDark3: #10162E;
+    color-secondaryDark: #7C5930;
+    color-text-light: #D4D8EB;
+}
+
+.header {
+    -fx-background-color: #10162E;
+}
+
+.header .label {
+    -fx-text-fill: #69A0E2;
+}
+
+.body {
+    -fx-background-color: #2D3142;
+}
+
+/*************************
+/       BACKGROUNDS
+*************************/
+
+.windowTicked{
+    -fx-border-radius: 10;
+    -fx-border-style:  dotted solid dotted solid;
+    -fx-border-color:  #7C5930;
+    -fx-border-width: 3;
+}
+
+/*************************
+/       TEXTS
+*************************/
+
+.appTitle {
+    -fx-text-fill: #0D101F;
+}
+
+.textLight {
+    -fx-text-fill: #D4D8EB;
+}
+
+.textError {
+    -fx-text-fill: #FF3338;
+}
+
+/*************************
+/       BUTTONS
+*************************/
+
+.btnCreate {
+    -fx-border-width: 3;
+    -fx-border-style: dotted solid dotted solid;
+    -fx-border-color:  #7C5930;
+    -fx-background-color: none;
+    -fx-text-fill: #7C5930;
+}
+
+.btnCreate:hover{
+    -fx-border-color: #C9A57A;
+    -fx-text-fill: #C9A57A;
+}
+
+.btnCreate:pressed{
+    -fx-border-style:none;
+}
+
+.btnTicket
+{
+    -fx-border-color:  #7C5930;
+    -fx-border-width: 3;
+    -fx-border-style: solid dotted solid dotted;
+    -fx-background-color: none;
+    -fx-text-fill: #7C5930;
+}
+
+.btnTicket:hover{
+    -fx-text-fill: #C9A57A;
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.btnTicket:pressed{
+    -fx-border-style:none;
+    -fx-border-color: #644117;
+    -fx-scale-y: 0.95;
+    -fx-scale-x: 0.75;
+}
+
+
+.btnRoundFunny {
+    -fx-background-color: none;
+    -fx-border-width: 3;
+    -fx-border-style: dotted solid dotted solid;
+    -fx-border-radius: 25;
+    -fx-border-color:  #7C5930;
+    -fx-text-fill: #7C5930;
+}
+
+.btnRoundFunny:hover {
+    -fx-border-radius: 50;
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.btnRoundFunny:pressed {
+    -fx-scale-y: 0.95;
+    -fx-scale-x: 0.75;
+    -fx-border-style: solid ;
+}
+
+.btnLeaf{
+    -fx-background-color: none;
+    -fx-border-width: 3;
+    -fx-border-style: dotted solid dotted solid;
+    -fx-border-radius: 25 0 25 0;
+    -fx-border-color:  #7C5930;
+    -fx-text-fill: #7C5930;
+}
+
+.btnLeaf:hover {
+    -fx-border-radius: 50;
+    -fx-scale-y: 1.05;
+    -fx-scale-x: 1.05;
+}
+
+.btnLeaf:pressed {
+    -fx-scale-y: 0.95;
+    -fx-scale-x: 0.75;
+    -fx-border-radius: 25 0 25 0;
+    -fx-border-style: solid ;
+}
+.imageBtn:hover .image-view{
+    -fx-rotate: -15;
+}
+
+.imageBtn:pressed{
+    -fx-rotate: -15;
+}
+
+.button:focused {
+    -fx-border-color: #C9A57A;
+}
+/*************************
+/       IMAGES
+*************************/
+
+.imgFunny:hover{
+    -fx-rotate: 15;
+}
+
+.imgFunny:pressed{
+    -fx-rotate: -15;
+}
+
+/*************************
+/       CHECKBOXS
+*************************/
+.check-box {
+    selected-box-color: #7C5930;
+    box-color: #D4D8EB;
+    mark-color: #D4D8EB;
+}
+
+
+.check-box:selected > .box {
+    -fx-background-color: selected-box-color;
+}
+
+.check-box > .box {
+    -fx-background-color: box-color;
+}
+
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+    -fx-background-color: mark-color;
+}
+
+/*************************
+/       SEPARATOR
+*************************/
+
+.line {
+    -fx-border-style: dashed;
+    -fx-border-width: 0 2 0 0;
+    -fx-border-color: #D4D8EB;
+}
+
+/*************************
+/       TABPANE
+*************************/
+
+#tab-book { -fx-background-color: #D0A1A9;}     /*ROSA*/
+#tab-book .tab-label { -fx-text-fill: #934D59;} /*ROSA*/
+#tab-student { -fx-background-color: #8A6D9B; }
+#tab-student .tab-label { -fx-text-fill: #542E6B;}
+#tab-borrow { -fx-background-color: #B5B6EE; }
+#tab-borrow .tab-label { -fx-text-fill: #6466BE;}
+#tab-borrow:selected .tab-label, #tab-student:selected .tab-label, #tab-book .tab-label
+{ -fx-text-fill: #D4D8EB;}
+
+/*todo: borrar estas clases*/
+#tab-UI, #tab-forms
+{
+    -fx-background-color: #84798F;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #10162E;
+    -fx-effect: null;
+}
+
+
+.tab {
+    -fx-background-color: #644117;
+    -fx-background-radius: 5 8 0 0;
+    -fx-pref-width: 100;
+}
+
+.tab:selected, #tab-book:selected, #tab-student:selected, #tab-borrow:selected, #tab-UI:selected, #tab-forms:selected {
+    -fx-background-color: #2D3142;
+    -fx-border-color: #2D3142;
+    -fx-border-radius:  5 8 0 0;
+    -fx-border-width: 3;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+
+}
+
+.tab-label {
+    -fx-text-fill: #D4D8EB;
+    -fx-font-weight: bold;
+    -fx-font-family: "Ebrima";
+    -fx-pref-width: 80;
+    -fx-alignment: center;
+}
+
+.tab-content-area {
+    -fx-border-color: #2D3142;
+}
+
+/*************************
+/       TABLEVIEW
+*************************/
+
+.table-view > .placeholder {
+    -fx-background-color: #656A82;
+    -fx-background-radius: 8 8 0 0;
+    -fx-border-color: #10162E;
+}
+
+
+.table-view .column-header:hover {
+    -fx-background-color:  #C9A57A;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-width: 2;
+    -fx-border-color: #10162E;
+    -fx-border-style: solid;
+}
+
+.table-view .column-header:hover .label {
+    -fx-text-fill: #10162E;
+}
+
+.table-view {
+    -fx-background-color: #10162E;
+    -fx-background-radius: 4 4 0 0;
+    -fx-border-radius: 4 4 0 0;
+    -fx-border-color: #10162E;
+}
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #10162E;
+    -fx-size: 35;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+
+.column-header {
+    -fx-background-color: #10162E;
+}
+
+.column-header .label {
+    -fx-text-fill: #69A0E2;
+}
+
+
+/*************************
+/       HYPERLINK
+*************************/
+
+.hyperlink:visited {
+    -fx-text-fill: #C9A57A;
+}
+
+/*
+    color-mainDark: #2D3142
+    color-mainDark2:  #1D233B
+    color-mainDark3: #10162E
+
+    COLOR-MARRÓN: #644117
+    COLOR-DORADO: #C9A57A
+
+    COLOR-FONDO-ROSA: #D0A1A9
+    COLOR-LETRA-ROSA: #934D59
+    COLOR-FONDO-MALVA: #6466BE
+    COLOR-FONDO-MALVA-PALIDO: #84798F
+
+
+    color-fondoClaro: 656A82
+    COLOR-SECUNDARIO-OSCURO: #7C5930
+    COLOR-TEXT-LIGHT: #D4D8EB
+    AZUL LUMINOSO: #69A0E2
+    */
