@@ -122,14 +122,33 @@ public class BorrowCreatorViewController {
     @FXML
     private void BorrowBook()
     {
-        borrowedBook.setAvailable(false);
-        BookRepository.Instance().Update(borrowedBook);
-        BorrowRepository.Instance().CreateBorrow(
-                borrowedBook.getCode(),
-                student.getCode());
+        if(student != null && borrowedBook != null){
+            borrowedBook.setAvailable(false);
+            BookRepository.Instance().Update(borrowedBook);
+            BorrowRepository.Instance().CreateBorrow(
+                    borrowedBook.getCode(),
+                    student.getCode());
 
-        SearchBook(); //In order to vanish the borrowedBook from the table
-        bibliotecaController.RefreshData();
+            SearchBook(); //In order to vanish the borrowedBook from the table
+            bibliotecaController.RefreshData();
+        } else {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("¿No te falta algo?");
+            String message = "";
+            if(student == null)
+            {
+                message = "¿A quién piensas prestarle el libro?\n¿Al aire que gime entre los montes y los ríos?";
+            } else {
+                message = "¿Qué libro le vas a prestar?\n¿O es que es un préstamo fantasma?";
+
+            }
+
+
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
     }
 
     @FXML

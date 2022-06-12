@@ -2,8 +2,13 @@
 .idea/
 *.iml
 *.iws
- 
- 
+
 # Maven
 log/
 target/
+
+# Build
+out/
+
+# Misc
+ConnectionInfo.java

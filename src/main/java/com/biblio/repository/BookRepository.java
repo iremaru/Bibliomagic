@@ -1,5 +1,8 @@
 package com.biblio.repository;
 
+import com.biblio.dao.BookDAO;
+import com.biblio.dao.StudentDAO;
+import com.biblio.entity.Libros;
 import com.biblio.model.Book;
 import com.biblio.connection.ConnectionDB;
 import javafx.scene.control.Alert;
@@ -8,15 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BookRepository {
-
-    private final String DB_TABLE_NAME = "libros";
-    private final String DB_COL_CODE = "codigo";
-    private final String DB_COL_TITLE = "titulo";
-    private final String DB_COL_AUTHOR = "autor";
-    private final String DB_COL_EDITORIAL = "editorial";
-    private final String DB_COL_STATE = "estado";
-    private final String DB_COL_SUBJECT = "asignatura";
-    private final String DB_COL_AVAILABILITY = "disponible";
 
     private static BookRepository instance;
     private static List<Book> books = new ArrayList<>();
@@ -32,7 +26,7 @@ public class BookRepository {
         if(instance != null) return;
 
         instance = this;
-        GetFromDB();
+        PoblateBookList();
         CheckCodes();
     }
 
@@ -51,10 +45,16 @@ public class BookRepository {
     public void Create(String title, String author,
                        String editorial, Book.Subject subject, Book.BookState state)
     {
-        Book newBook = new Book(AssignBookCode(), title,author,editorial,subject,state, 1);
+        Book newBook = new Book(AssignBookCode(),
+                title,
+                author,
+                editorial,
+                subject,
+                state,
+                1);
 
         books.add(newBook);
-        CreateIntoDB(newBook);
+        BookDAO.Instance.addData(Book.convertIntoLibro(newBook));
     }
 
     public Book Get(int bookCode) {
@@ -69,17 +69,13 @@ public class BookRepository {
         return books.toArray(Book[]::new);
     }
 
-    public void UpdateAll() {
-        UpdateDB();
-    }
 
     public void Update(Book book) {
-        //// TODO: 13/01/2022
-        UpdateIntoDB(book);
+        BookDAO.Instance.updateData(Book.convertIntoLibro(book));
     }
 
     public void Delete(Book book) {
-        DeleteInDB(book);
+        BookDAO.Instance.deleteData(Book.convertIntoLibro(book));
         books.remove(book);
     }
 
@@ -87,75 +83,17 @@ public class BookRepository {
     //      PRIVATE METHODS
     //*************************
 
-    /**
-     * Get data from DB
-     */
-    private void GetFromDB()
-    {
-        if(ConnectionDB.GetTableData(DB_TABLE_NAME) != null)
-            books = PoblateBookList(ConnectionDB.GetTableData(DB_TABLE_NAME))  ;
-    }
 
-    private void UpdateDB()
+    private List<Book> PoblateBookList()
     {
-        for (Book book :books) {
-            UpdateIntoDB(book);
+        List<Libros> libros = BookDAO.Instance.fetchAll();
+
+        books.clear();
+        for (Libros libro :libros) {
+            books.add(Book.convertFromLibro(libro));
         }
-    }
-
-    /**
-     * Update data into database
-     * @param newBook
-     */
-    private void UpdateIntoDB(Book newBook)
-    {
-        //UPDATE `libros` SET `Titulo` = 'A', `Autor` = 'B', `Editorial` = 'C',
-        // `Asignatura` = 'A', `estado` = 'D' WHERE `libros`.`codigo` = 0
-        String sql = "UPDATE `" + DB_TABLE_NAME + "` SET `" +
-                DB_COL_TITLE + "` = '" + newBook.getTitle() + "', `" +
-                DB_COL_AUTHOR + "` = '" + newBook.getAuthor() + "', `" +
-                DB_COL_EDITORIAL + "` = '" + newBook.getEditorial() + "', `" +
-                DB_COL_SUBJECT + "` = '" + newBook.getSubjectString() + "', `" +
-                DB_COL_AVAILABILITY + "` = '" + newBook.getAvailableInt() + "', `" +
-                DB_COL_STATE + "` = '" + newBook.getStateString() +
-                "' WHERE `"+ DB_TABLE_NAME + "`.`" + DB_COL_CODE + "` = " + newBook.getCode();
-        ConnectionDB.SendInstructionToBD(sql);
-
-    }
-
-    private void CreateIntoDB(Book newBook)
-    {
-        String sql = "INSERT INTO " + DB_TABLE_NAME +
-                " ("+ DB_COL_CODE + ", "+
-                DB_COL_TITLE + ", " +
-                DB_COL_AUTHOR + ", " +
-                DB_COL_EDITORIAL + ", " +
-                DB_COL_SUBJECT + ", " +
-                DB_COL_STATE+") "+
-                "VALUES ('" +
-                newBook.getCode() +  "', '" +
-                newBook.getTitle() + "', '" +
-                newBook.getAuthor() + "', '" +
-                newBook.getEditorial() + "', '" +
-                newBook.getSubjectString() + "', '" +
-                newBook.getStateString() + "');";
-        ConnectionDB.SendInstructionToBD(sql);
-    }
-
-    private void DeleteInDB(Book book)
-    {
-        //"DELETE FROM `libros` WHERE `libros`.`codigo` = 9"
-        String sql = "delete from `" + DB_TABLE_NAME +
-                "` where `" + DB_TABLE_NAME + "`.`" + DB_COL_CODE + "`= " +
-                book.getCode();
-        ConnectionDB.SendInstructionToBD(sql);
-    }
-
-    private List<Book> PoblateBookList(List<Object[]> listFromBaseData)
-    {
-        //We will receive a List of rows (Data Entries)
-        //And each row will have a []object in each column.
-
+        return books;
+        /*
         List<Book> result = new ArrayList<>();
 
         //Each Row -> A Book
@@ -173,7 +111,7 @@ public class BookRepository {
             result.add( new Book(code, title, author, editorial, subject, state, isAvailable) );
         }
 
-        return result;
+        return result;*/
     }
 
     private void CheckCodes()

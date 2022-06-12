@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: none;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.AlumnCreatorViewController">
+<AnchorPane style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.AlumnCreatorViewController">
     <children>
         <AnchorPane prefHeight="600.0" prefWidth="450.0" style="-fx-background-radius: 10; -fx-border-color: #7C5930; -fx-border-radius: 10;" styleClass="body" stylesheets="@style/style.css">
             <children>
@@ -72,6 +73,9 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
+                           <tooltip>
+                              <Tooltip text="Crear y continuar" />
+                           </tooltip>
                                 </Button>
                                 <Button mnemonicParsing="false" onAction="#CreateAndClose" styleClass="btnRoundFunny">
                                     <graphic>
@@ -84,6 +88,9 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
+                           <tooltip>
+                              <Tooltip text="Crear y cerrar" />
+                           </tooltip>
                                 </Button>
                                 <Button cancelButton="true" mnemonicParsing="false" onAction="#Close" styleClass="btnRoundFunny">
                                     <graphic>
@@ -99,6 +106,9 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
+                           <tooltip>
+                              <Tooltip text="Cerrar" />
+                           </tooltip>
                                 </Button>
                             </children>
                             <padding>

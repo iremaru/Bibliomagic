@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -26,14 +27,14 @@ public class AlumnEditorViewController {
     @FXML
     private void EditeAndClose(ActionEvent event)
     {
-        UpdateStudent();
-        alumnTabController.RefreshTable();
-        Close(event);
+        if(UpdateStudent())
+            Close(event);
     }
 
     @FXML
     private void Close(ActionEvent event)
     {
+        alumnTabController.RefreshTable();
         Main.CloseSecondaryWindow((Stage)(((Node)(event.getSource())).getScene().getWindow()));
     }
     @FXML
@@ -46,13 +47,42 @@ public class AlumnEditorViewController {
     }
 
 
-    public void UpdateStudent()
+    public boolean UpdateStudent()
     {
-        studentToEdit.setHouse(house.getValue());
-        studentToEdit.setSurname(surname.getText());
-        studentToEdit.setName(name.getText());
-        studentToEdit.setYear(year.getText());
-        StudentRepository.Instance().updateStudent(studentToEdit);
+
+        if(!name.getText().isBlank() &&
+                !surname.getText().isBlank() &&
+                house.getValue() != null &&
+                !year.getText().isBlank())
+        {
+            StudentRepository.Instance().createStudent(
+                    name.getText(),
+                    surname.getText(),
+                    house.getValue(),
+                    year.getText()
+            );
+            return true;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setTitle("Debes ingresar toda la información");
+        String message = "";
+        if(name.getText().isBlank())
+        {
+            message = "¿Qué es un alumno sin nombre?\nHasta los muggles tienen nombre.";
+        } else if (surname.getText().isBlank()) {
+            message = "¿Qué es un alumno sin apellido?\nEn este mundo no eres nadie sin tu familia.";
+        } else if (house.getValue() == null) {
+            message = "¿Qué es un alumno sin casa?\n¿Cómo sabremos si es de los malos o de los buenos?.";
+        } else {
+            message = "¿Qué es un alumno sin curso?\n¿Cómo sabremos si tiene edad para leer ese libro de filtros de amor?";
+
+        }
+
+        alert.setContentText(message);
+        alert.showAndWait();
+        return false;
     }
 
     //*************************

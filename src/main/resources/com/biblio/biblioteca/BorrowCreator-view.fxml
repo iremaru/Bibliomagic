@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: none; -fx-border-color: #7C5930; -fx-border-radius: 10;" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.BorrowCreatorViewController">
+<AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: none; -fx-border-color: #7C5930; -fx-border-radius: 10;" stylesheets="@style/style.css" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.BorrowCreatorViewController">
    <children>
       <VBox prefHeight="600.0" prefWidth="1000.0" style="-fx-border-radius: 10; -fx-background-radius: 10;" styleClass="body" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>

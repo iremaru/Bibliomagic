@@ -1,5 +1,8 @@
 package com.biblio.model;
 
+import com.biblio.entity.Alumnos;
+import com.biblio.entity.Libros;
+
 public class Student {
 
     private int code;
@@ -53,6 +56,14 @@ public class Student {
         this.house = house;
         this.year = year;
     }
+
+    public Student(int code, String name, String surname, String house, String year) {
+        this.code = code;
+        this.name = name;
+        this.surname = surname;
+        this.house = House.getHouse(house);
+        this.year = year;
+    }
     public Student(String name, String surname, House house, String year) {
         this.name = name;
         this.surname = surname;
@@ -100,6 +111,28 @@ public class Student {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+
+    public static Student convertFromAlumno(Alumnos alumno)
+    {
+        return new Student(alumno.getRegistro(),
+                alumno.getNombre(),
+                alumno.getApellido(),
+                alumno.getCasa(),
+                alumno.getCurso());
+    }
+
+    public static Alumnos convertIntoAlumno(Student student)
+    {
+        Alumnos alumno = new Alumnos();
+        alumno.setRegistro(student.code);
+        alumno.setCurso(student.year);
+        alumno.setNombre(student.name);
+        alumno.setApellido(student.surname);
+        alumno.setCasa(student.house.label);
+
+        return alumno;
     }
 
 }

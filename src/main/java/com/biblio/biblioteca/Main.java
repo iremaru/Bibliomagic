@@ -201,35 +201,4 @@ public class Main extends Application {
         return IsConnected();
     }
 
-    public static boolean CheckUserCredential(String userName, String password)
-    {
-        //TODO: DELETE CHEAT LOGIN BEFORE RELEASE TIME
-        if(CheatLogIn(userName, password)) return true;
-
-        final String userTable = "usuarios";
-        final String userField = "usuario";
-        final String passwordField = "clave";
-        boolean result = false;
-
-        //String SQLrequest = "SELECT * FROM "+userTable+" WHERE "+userField+"=" + userName +" AND "+passwordField+"="+password;
-        String SQLrequest = "SELECT * FROM "+userTable+" WHERE "+userField+"=? AND "+passwordField+"=?";
-        System.out.println("Comprobando usuario y contraseña");
-        try {
-            PreparedStatement statement = connection.prepareStatement(SQLrequest) ;
-            statement.setString(1, userName);
-            statement.setString(2, password);
-            ResultSet resultSet = statement.executeQuery();
-            result = resultSet.next();
-
-        } catch (Exception ex){ex.printStackTrace();}
-
-        return result;
-    }
-
-    private static boolean CheatLogIn(String username, String password)
-    {
-        //TODO: DELETE!
-        return username.equals("Rimbarrita")  && password.equals("Rimbarruca") ;
-    }
-
 }

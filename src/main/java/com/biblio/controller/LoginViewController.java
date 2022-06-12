@@ -2,6 +2,7 @@ package com.biblio.controller;
 
 import com.biblio.biblioteca.Main;
 
+import com.biblio.service.LoginService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -32,7 +33,6 @@ public class LoginViewController {
 
         if(userNameIsCorrect && passwordIsCorrect)
         {
-            System.out.println("Contraseña y Usuario bien escritos");
             if( VerifyCredentialsInDB() ) {
                 GoToApp(event);
             }
@@ -69,42 +69,23 @@ public class LoginViewController {
     }
 
     private boolean VerifyCredentialsInDB() {
-        /*if (CheckConnection())
-        {
-            System.out.println("Verificando credenciales");
-            return BibliotecaApplication.CheckUserCredential(userNameField.getText(), passwordField.getText());
-        }*/
 
-        return Main.CheckUserCredential(userNameField.getText(), passwordField.getText());
+        return LoginService.CheckUserCredential(userNameField.getText(), passwordField.getText());
     }
 
     private void GoToApp(ActionEvent event)
     {
-        /*try
-        {
-            Stage stage = (Stage)(((Node)(event.getSource())).getScene().getWindow()) ;
-            stage.hide();
-
-            //Parent root = FXMLLoader.load(BibliotecaApplication.class.getResource("main-view.fxml"));
-            Scene scene = new Scene(FXMLLoader.load(BibliotecaApplication.class.getResource("main-view.fxml")));
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (Exception ex) {}*/
         Main.OpenMainWindow();
 
     }
 
     private boolean CheckConnection()
     {
-        System.out.println("Comprobando conexión");
-        //Comprueba que ni esté conectada ni reconecta
         if(!Main.IsConnected() && !Main.Reconnect())
         {
             errorBDLabel.setOpacity(1d);
             return false;
         }
-        System.out.println("Está conectado");
         if(errorBDLabel.getOpacity() > 0) errorBDLabel.setOpacity(0d);
         return true;
     }

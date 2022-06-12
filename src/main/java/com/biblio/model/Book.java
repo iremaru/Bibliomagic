@@ -1,5 +1,7 @@
 package com.biblio.model;
 
+import com.biblio.entity.Libros;
+
 public class Book {
 
     private int code;
@@ -98,6 +100,16 @@ public class Book {
         this.isAvailable = isAvailable;
     }
 
+    public Book(int code, String title, String author, String editorial, String subject, String state, byte isAvailable) {
+        this.code = code;
+        this.title = title;
+        this.author = author;
+        this.editorial = editorial;
+        this.subject = TransformToSubject(subject);
+        this.state = TransformToBookState(state);
+        this.isAvailable = isAvailable == 1 ? true : false;
+    }
+
     public int getCode() {
         return code;
     }
@@ -183,5 +195,30 @@ public class Book {
                 ", subject=" + subject +
                 ", state=" + state +
                 '}';
+    }
+
+    public static Book convertFromLibro(Libros libro)
+    {
+        return new Book(libro.getCodigo(),
+                libro.getTitulo(),
+                libro.getAutor(),
+                libro.getEditorial(),
+                libro.getAsignatura(),
+                libro.getEstado(),
+                libro.getDisponible());
+    }
+
+    public static Libros convertIntoLibro(Book book)
+    {
+        Libros libro = new Libros();
+        libro.setCodigo(book.code);
+        libro.setTitulo(book.title);
+        libro.setAutor(book.author);
+        libro.setEditorial(book.editorial);
+        libro.setAsignatura(book.subject.inSpanish);
+        libro.setEstado(book.state.inSpanish);
+        libro.setDisponible((byte)book.getAvailableInt());
+
+        return libro;
     }
 }

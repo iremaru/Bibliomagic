@@ -1,27 +1,24 @@
 package com.biblio.connection;
 
+import javafx.scene.control.Alert;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ConnectionDB {
 
-    static final String dbName = "libros";
-    static final String dbURL = "jdbc:mysql://localhost/" + dbName;
-    static final String user = "root";
-    static final String pass = "";
-
     public static Connection connection;
 
     public static Connection Connect()
     {
-        //Connection connection = null;
 
         try {
-            //Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(dbURL, user, pass);
+            connection = DriverManager.getConnection(
+                    ConnectionInfo.dbURL,
+                    ConnectionInfo.user,
+                    ConnectionInfo.pass);
         } catch (Exception ex) {
-            ex.printStackTrace();
         }
 
         return  connection;
