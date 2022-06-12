@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -29,28 +30,58 @@ public class BookCreatorViewController {
     @FXML
     private void CreateAndContinue(ActionEvent event)
     {
-        CreateNewBook();
+        if(CreateNewBook()){
+            title.setText("");
+            author.setText("");
+            editorial.setText("");
+        }
 
-        title.setText("");
-        author.setText("");
-        editorial.setText("");
     }
 
     @FXML
     private void CreateAndClose(ActionEvent event)
     {
-        CreateNewBook();
-        Close(event);
+        if(CreateNewBook())
+            Close(event);
     }
 
-    private void CreateNewBook()
+    private boolean CreateNewBook()
     {
-        BookRepository.Instance().Create(
-                title.getText(),
-                author.getText(),
-                editorial.getText(),
-                subject.getValue(),
-                state.getValue());
+        if (title.getText().isBlank() ||
+            author.getText().isBlank() ||
+            editorial.getText().isBlank() ||
+            subject.getValue() == null ||
+            state.getValue() == null)
+        {
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setTitle("Debes ingresar toda la información");
+            String message = "";
+            if(title.getText().isBlank()) {
+                message = "¿Qué es un libro sin título?\nHasta los libros prohibidos tienen título. Otra cosa es que no se mencione";
+            } else if (author.getText().isBlank()) {
+                message = "¿Qué es un libro sin autor?\nSi no lo sabes, pon \"anonimo\".\nSi lo sabes, ponlo.";
+            } else if (editorial.getText().isBlank()) {
+                message = "¿Qué es un libro sin editorial?\nNo me vale el \"Lo hizo un mago\".";
+            } else if (subject.getValue() == null) {
+                message = "¿Cómo vamos a tener un libro sin asignatura?\n¿Para qué lo quieren los alumnos entonces? ¿Para ligar? Ponlo en pociones, junto al resto de filtros de amor.";
+            } else {
+                message = "¿Cómo no vas a poner el estado?\n¿Y si lo prestamos cuasinuevo y nos lo devuelven desvencijado? ¿Cómo vamos a darnos cuenta?";
+
+            }
+            alert.setContentText(message);
+            alert.showAndWait();
+            return false;
+        } else {
+            BookRepository.Instance().Create(
+                    title.getText(),
+                    author.getText(),
+                    editorial.getText(),
+                    subject.getValue(),
+                    state.getValue());
+            return  true;
+        }
     }
 
     //*************************

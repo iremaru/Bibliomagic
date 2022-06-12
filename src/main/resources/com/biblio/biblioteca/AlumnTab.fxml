@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="alumnTab" prefHeight="573.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.AlumnTabController">
+<VBox fx:id="alumnTab" prefHeight="573.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.AlumnTabController">
    <children>
       <HBox alignment="CENTER_RIGHT" maxHeight="100.0" prefHeight="75.0" prefWidth="200.0" spacing="10.0">
          <children>

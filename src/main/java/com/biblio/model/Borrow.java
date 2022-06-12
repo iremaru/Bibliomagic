@@ -1,5 +1,6 @@
 package com.biblio.model;
 
+import com.biblio.entity.Prestamos;
 import com.biblio.repository.BookRepository;
 import com.biblio.repository.StudentRepository;
 
@@ -52,7 +53,8 @@ public class Borrow {
         }
     }
 
-    public Borrow(int id, int id_Student, int id_Book, Date date_Start, Date date_End, State state) {
+    public Borrow(int id, int id_Student, int id_Book, Date date_Start,
+                  Date date_End, State state) {
         this.id = id;
         this.id_Student = id_Student;
         this.id_Book = id_Book;
@@ -135,5 +137,28 @@ public class Borrow {
                 StudentRepository.Instance().GetStudent(id_Student).getSurname();
     }
 
+    public static Borrow convertFromPrestamo(Prestamos prestamo)
+    {
+        return new Borrow(prestamo.getId(),
+                prestamo.getCodAlumno(),
+                prestamo.getCodLibros(),
+                prestamo.getFechaPrestamo(),
+                prestamo.getFechaDevolucion(),
+                State.getState(prestamo.getEstado())
+                );
+    }
+
+    public static Prestamos convertIntoPrestamo(Borrow borrow)
+    {
+        Prestamos prestamo = new Prestamos();
+        prestamo.setId(borrow.id);
+        prestamo.setCodAlumno(borrow.getId_Student());
+        prestamo.setCodLibros(borrow.getId_Book());
+        prestamo.setFechaPrestamo(borrow.date_Start);
+        prestamo.setFechaDevolucion(borrow.date_End);
+        prestamo.setEstado(borrow.state.label);
+
+        return prestamo;
+    }
 }
 

@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,15 +17,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: none;" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.biblio.controller.AlumnEditorViewController">
+<AnchorPane style="-fx-background-color: none;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblio.controller.AlumnEditorViewController">
     <children>
         <AnchorPane prefHeight="600.0" prefWidth="450.0" style="-fx-background-radius: 10; -fx-border-color: #7C5930; -fx-border-radius: 10;" styleClass="body" stylesheets="@style/style.css">
             <children>
                 <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="450.0" spacing="10.0" style="-fx-border-color: #7C5930; -fx-border-width: 3; -fx-border-radius: 10; -fx-border-style: dotted solid dotted solid; -fx-background-radius: 10;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <Label contentDisplay="TOP" styleClass="textLight" stylesheets="@style/style.css" text="REGISTRAR ALUMNO" textAlignment="CENTER">
+                        <Label contentDisplay="TOP" styleClass="textLight" stylesheets="@style/style.css" text="TRANSFORMAR ALUMNO" textAlignment="CENTER">
                             <font>
                                 <Font name="Corbel Bold" size="18.0" />
                             </font>
@@ -67,13 +66,16 @@
                                     <graphic>
                                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@img/UIicons/icons-aprobar-y-actualizar-100.png" />
+                                                <Image url="@img/UIicons/icons8-libro-abierto-100.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
+                           <tooltip>
+                              <Tooltip text="Vaciar los campos" />
+                           </tooltip>
                                 </Button>
                                 <Button mnemonicParsing="false" onAction="#EditeAndClose" styleClass="btnRoundFunny">
                                     <graphic>
@@ -86,6 +88,9 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
+                           <tooltip>
+                              <Tooltip text="Modificar" />
+                           </tooltip>
                                 </Button>
                                 <Button cancelButton="true" mnemonicParsing="false" onAction="#Close" styleClass="btnRoundFunny">
                                     <graphic>
@@ -101,6 +106,9 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
+                           <tooltip>
+                              <Tooltip text="Cancelar" />
+                           </tooltip>
                                 </Button>
                             </children>
                             <padding>

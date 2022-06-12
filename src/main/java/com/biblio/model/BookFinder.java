@@ -66,8 +66,9 @@ public class BookFinder {
         this.author = author;
         SetStates(isUsedBook, isNewBook);
         this.subject = subject;
-        this.searchResult = GetAllMatch();
         requireAvailability = isAvailable;
+
+        this.searchResult = GetAllMatch();
     }
 
     public Book[] GetResult()

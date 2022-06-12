@@ -73,6 +73,7 @@ public class AlumnTabController {
     {
         SetStudentsInTableView(StudentRepository.Instance().GetStudentList());
         studentsTable.refresh();
+        mainController.RefreshData();
     }
 
     //*************************
@@ -82,15 +83,29 @@ public class AlumnTabController {
     @FXML
     private void SearchStudents()
     {
-        //TODO
-        SetStudentsInTableView(
-                studentFinder.Search(
-                    nameTF.getText(),
-                    surnameTF.getText(),
-                    houseTF.getValue(),
-                    yearTF.getText()
-                )
-        );
+        Student.House house = houseTF.getValue();
+        if(house != null)
+        {
+            SetStudentsInTableView(
+                    studentFinder.Search(
+                            nameTF.getText(),
+                            surnameTF.getText(),
+                            house,
+                            yearTF.getText()
+                    )
+            );
+        } else {
+            List<Student.House> houses = List.of(Student.House.values());
+            SetStudentsInTableView(
+                    studentFinder.Search(
+                            nameTF.getText(),
+                            surnameTF.getText(),
+                            houses,
+                            yearTF.getText()
+                    )
+            );
+        }
+
     }
 
     private void SetStudentsInTableView(List<Student> students)
@@ -119,7 +134,11 @@ public class AlumnTabController {
     @FXML
     private void UpdateStudent()
     {
-        Main.OpenStudentEditorWindow((Student)(studentsTable.getSelectionModel().getSelectedItem()), this);
+        Student student = GetStudentInTable("transformar");
+        if(student != null)
+        {
+            Main.OpenStudentEditorWindow((Student)(studentsTable.getSelectionModel().getSelectedItem()), this);
+        }
     }
     @FXML
     private void DeleteStudent()
